@@ -5,6 +5,7 @@ requires-python = ">=3.8"
 members = [
     "sample",
     "sub",
+    "sub2",
 ]
 
 [[package]]

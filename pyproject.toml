@@ -5,7 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
-    "sub", "sub2"
+    "sub",
+    "sub2",
 ]
 
 [tool.uv]
@@ -17,12 +18,12 @@ dev-dependencies = [
 packages = ["src"]
 
 [tool.uv.sources]
+sub2 = { workspace = true }
 sub = { workspace = true }
-sub2 = { path = 'packages/sub2' }
 
 
 [tool.uv.workspace]
-members = ["packages/sub"]
+members = ["packages/*"]
 # exclude = ["packages/sub2"]
 
 [build-system]
