@@ -1,2 +1,2 @@
 def hello():
-    print('Hello from sub package!')
+    print('Hello from sub!')
