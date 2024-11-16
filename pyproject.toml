@@ -1,15 +1,35 @@
 [project]
-name = "example"
+name = "sample"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = []
+dependencies = [
+    "sub", "sub2"
+]
 
 [tool.uv]
 dev-dependencies = [
     "pytest>=8.3.2", "mypy>=1.11.1", "ruff>=0.5.7"
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.uv.sources]
+sub = { workspace = true }
+sub2 = { path = 'packages/sub2' }
+
+
+[tool.uv.workspace]
+members = ["packages/sub"]
+# exclude = ["packages/sub2"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# https://docs.astral.sh/uv/configuration/indexes/
 
 [tool.ruff]
 line-length = 119

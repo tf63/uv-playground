@@ -1,6 +1,12 @@
 version = 1
 requires-python = ">=3.8"
 
+[manifest]
+members = [
+    "sample",
+    "sub",
+]
+
 [[package]]
 name = "colorama"
 version = "0.4.6"
@@ -8,27 +14,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d8/53/6f443c9a4a8358a93a6792e2acffb9d9d5cb0a5cfd8802644b7b1c9a02e4/colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44", size = 27697 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6", size = 25335 },
-]
-
-[[package]]
-name = "example"
-version = "0.1.0"
-source = { virtual = "." }
-
-[package.dev-dependencies]
-dev = [
-    { name = "mypy" },
-    { name = "pytest" },
-    { name = "ruff" },
-]
-
-[package.metadata]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "mypy", specifier = ">=1.11.1" },
-    { name = "pytest", specifier = ">=8.3.2" },
-    { name = "ruff", specifier = ">=0.5.7" },
 ]
 
 [[package]]
@@ -161,6 +146,45 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/63/76/253ddc3e89e70165bba952ecca424b980b8d3c2598ceb4fc47904f424953/ruff-0.7.4-py3-none-win_amd64.whl", hash = "sha256:745775c7b39f914238ed1f1b0bebed0b9155a17cd8bc0b08d3c87e4703b990d6", size = 9497534 },
     { url = "https://files.pythonhosted.org/packages/aa/70/f8724f31abc0b329ca98b33d73c14020168babcf71b0cba3cded5d9d0e66/ruff-0.7.4-py3-none-win_arm64.whl", hash = "sha256:11bff065102c3ae9d3ea4dc9ecdfe5a5171349cdd0787c1fc64761212fc9cf1f", size = 8851590 },
 ]
+
+[[package]]
+name = "sample"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "sub" },
+    { name = "sub2" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "mypy" },
+    { name = "pytest" },
+    { name = "ruff" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "sub", virtual = "packages/sub" },
+    { name = "sub2", virtual = "packages/sub2" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "mypy", specifier = ">=1.11.1" },
+    { name = "pytest", specifier = ">=8.3.2" },
+    { name = "ruff", specifier = ">=0.5.7" },
+]
+
+[[package]]
+name = "sub"
+version = "0.1.0"
+source = { virtual = "packages/sub" }
+
+[[package]]
+name = "sub2"
+version = "0.1.0"
+source = { virtual = "packages/sub2" }
 
 [[package]]
 name = "tomli"
